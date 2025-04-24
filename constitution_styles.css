@@ -1,0 +1,1019 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --blue: #000080;
+            --brown: #8B4513;
+            --parchment: #f5f5dc;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #e6d7b8;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .background {
+            background: linear-gradient(rgba(230, 215, 184, 0.8), rgba(230, 215, 184, 0.9)), 
+                        url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Constitution_of_India.jpg/800px-Constitution_of_India.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: rgba(244, 232, 209, 0.95);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border: 5px solid var(--brown);
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        .national-emblem {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/1200px-Emblem_of_India.svg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+            transition: transform 0.3s;
+        }
+        
+        .national-emblem:hover {
+            transform: scale(1.1);
+        }
+        
+        .ashoka-chakra {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Ashoka_Chakra.svg/1200px-Ashoka_Chakra.svg.png');
+            background-size: contain;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: rotate 60s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            color: #4a4a4a;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--brown);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        input[type="text"], 
+        input[type="password"], 
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: #fff;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--saffron);
+            box-shadow: 0 0 5px rgba(255, 153, 51, 0.5);
+            outline: none;
+        }
+        
+        button {
+            background-color: var(--saffron);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            background-color: #FF8000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+        }
+        
+        .social-login {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .social-btn {
+            flex: 1;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-btn i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        .google-btn { 
+            background-color: #DB4437; 
+        }
+        
+        .facebook-btn { 
+            background-color: #4267B2; 
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin: 10px 0;
+        }
+        
+        .forgot-password a {
+            color: var(--green);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+            color: #0e6e07;
+        }
+        
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid var(--brown);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .game-mode {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .game-mode:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--saffron);
+        }
+        
+        .emblem {
+            width: 80px;
+            height: 80px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto 15px;
+            transition: all 0.3s;
+        }
+        
+        .game-mode:hover .emblem {
+            transform: scale(1.1);
+        }
+        
+        #loginPage, #forgotPasswordPage, #mockLoginPage, #surveyPage, #characterPage, #gamePage, #mapPage, #quizPage, 
+        #timelinePage, #leadersPage, #articlesPage, #amendmentsPage, #preambleGamePage, #rightsDutiesPage {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        #loginPage {
+            display: block;
+        }
+        
+        .character {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 150px;
+            height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .character:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .progress-container {
+            margin-top: 30px;
+            background-color: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--saffron), var(--green));
+            transition: width 0.5s ease-in-out;
+            position: relative;
+        }
+        
+        .progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                            rgba(255,255,255,0.1) 0%, 
+                            rgba(255,255,255,0.3) 50%, 
+                            rgba(255,255,255,0.1) 100%);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .settings-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--brown);
+            transition: all 0.3s;
+        }
+        
+        .settings-btn:hover {
+            transform: rotate(30deg);
+            color: var(--blue);
+        }
+        
+        .avatar-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--green);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .constitution-book {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 150px;
+            background-color: var(--brown);
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Constitution_of_India.jpg/800px-Constitution_of_India.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        
+        .constitution-book span {
+            background-color: rgba(139, 69, 19, 0.8);
+            padding: 5px;
+            border-radius: 3px;
+        }
+        
+        .constitution-book:hover {
+            transform: translateY(-5px) rotate(5deg);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+        }
+        
+        .state-marker {
+            background-color: var(--saffron);
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .state-marker:hover {
+            transform: scale(1.5);
+            background-color: var(--green);
+        }
+        
+        .popup-content {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .popup-title {
+            font-weight: bold;
+            color: var(--brown);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .popup-info {
+            font-size: 14px;
+            margin: 5px 0;
+            color: #555;
+        }
+        
+        .popup-button {
+            background-color: var(--green);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: all 0.3s;
+        }
+        
+        .popup-button:hover {
+            background-color: #0e6e07;
+        }
+        
+        .quiz-container {
+            margin-top: 20px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .quiz-question {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: var(--blue);
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .quiz-option {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f0f0f0;
+            border-color: var(--saffron);
+        }
+        
+        .quiz-option.selected {
+            background-color: var(--green);
+            color: white;
+            border-color: var(--green);
+        }
+        
+        .quiz-footer {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Tricolor-inspired color scheme */
+        .saffron-bg { background-color: var(--saffron); }
+        .white-bg { background-color: var(--white); }
+        .green-bg { background-color: var(--green); }
+        .blue-color { color: var(--blue); }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal-content {
+            background-color: var(--parchment);
+            margin: 5% auto;
+            padding: 25px;
+            border: 3px solid var(--brown);
+            width: 80%;
+            max-width: 700px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideInDown 0.5s;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--brown);
+            transform: rotate(90deg);
+        }
+        
+        .constitution-content {
+            padding: 10px;
+            line-height: 1.8;
+        }
+        
+        .constitution-content h2 {
+            color: var(--brown);
+            border-bottom: 2px solid var(--saffron);
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+        
+        .constitution-content h3 {
+            color: var(--blue);
+            margin-top: 20px;
+            font-size: 1.3em;
+        }
+        
+        .constitution-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .constitution-content .article {
+            background-color: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid var(--green);
+        }
+        
+        .constitution-content .article h4 {
+            color: var(--brown);
+            margin-top: 0;
+        }
+        
+        /* Timeline Game Styles */
+        .timeline-container {
+            margin-top: 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--saffron);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            animation: slideInLeft 0.5s forwards;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            animation: slideInRight 0.5s forwards;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            position: relative;
+            border: 1px solid #ddd;
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--blue);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            right: -7px;
+            top: 20px;
+            background-color: white;
+            border: 3px solid var(--green);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: -7px;
+            top: 20px;
+            background-color: white;
+            border: 3px solid var(--green);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--brown);
+            margin-bottom: 5px;
+        }
+        
+        /* Leaders Game Styles */
+        .leaders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .leader-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .leader-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--saffron);
+        }
+        
+        .leader-info {
+            padding: 15px;
+        }
+        
+        .leader-info h3 {
+            margin: 0 0 5px 0;
+            color: var(--blue);
+        }
+        
+        .leader-info p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* Articles Game Styles */
+        .articles-container {
+            margin-top: 20px;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .article-card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border-top: 3px solid var(--green);
+        }
+        
+        .article-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .article-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--brown);
+            margin-bottom: 5px;
+        }
+        
+        .article-title {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        /* Amendments Game Styles */
+        .amendments-container {
+            margin-top: 20px;
+        }
+        
+        .amendment-card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--saffron);
+        }
+        
+        .amendment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .amendment-number {
+            font-weight: bold;
+            color: var(--blue);
+        }
+        
+        .amendment-year {
+            color: var(--brown);
+        }
+        
+        .amendment-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .amendment-description {
+            font-size: 14px;
+            color: #555;
+        }
+        
+        /* Preamble Game Styles */
+        .preamble-game-container {
+            margin-top: 20px;
+            background-color: rgba(255,255,255,0.8);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .preamble-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 5px solid var(--green);
+        }
+        
+        .preamble-blanks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .blank-option {
+            background-color: var(--saffron);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .blank-option:hover {
+            background-color: #e68a00;
+        }
+        
+        .preamble-puzzle {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .blank-space {
+            display: inline-block;
+            min-width: 100px;
+            height: 30px;
+            border-bottom: 2px dashed var(--brown);
+            margin: 0 5px;
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .blank-space.filled {
+            border-bottom: 2px solid var(--green);
+        }
+        
+        /* Rights & Duties Game Styles */
+        .rights-duties-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .rights-duties-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .rights-column, .duties-column {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .rights-column {
+            border-top: 5px solid var(--saffron);
+        }
+        
+        .duties-column {
+            border-top: 5px solid var(--green);
+        }
+        
+        .rights-duties-title {
+            text-align: center;
+            color: var(--blue);
+            margin-bottom: 15px;
+        }
+        
+        .rights-duties-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .rights-duties-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+        
+        .rights-duties-item:hover {
+            background-color: #f0f0f0;
+            transform: translateX(5px);
+        }
+        
+        .rights-item {
+            border-left-color: var(--saffron);
+        }
+        
+        .duties-item {
+            border-left-color: var(--green);
+        }
+        
+        /* Achievement Badges */
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .badge {
+            width: 80px;
+            height: 80px;
+            background-color: var(--saffron);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            padding: 5px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .badge::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .badge:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        .badge:hover::after {
+            opacity: 1;
+        }
+        
+        .badge.earned {
+            background-color: var(--green);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .game-modes {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+            
+            .social-btn {
+                margin: 5px 0;
+            }
+            
+            .national-emblem {
+                width: 40px;
+                height: 40px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }

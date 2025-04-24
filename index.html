@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="constitution_styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitution of India Game</title>
+    💡<meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src * data:;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+   <body>
+    <div class="background">
+        <div class="container">
+            <div class="national-emblem"></div>
+            <div class="ashoka-chakra"></div>
+            <button class="settings-btn">⚙️</button>
+
+            <div id="loginPage">
+                <h1>Constitution of India Game</h1>
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit" class="saffron-bg">Login</button>
+                    <div class="forgot-password">
+                        <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                    </div>
+                </form>
+                <div class="social-login">
+                    <button id="googleLoginBtn" class="social-btn google-btn"><i class="fab fa-google"></i> Login with Google</button>
+                    <button id="facebookLoginBtn" class="social-btn facebook-btn"><i class="fab fa-facebook-f"></i> Login with Facebook</button>
+                </div>
+            </div>
+
+            <div id="forgotPasswordPage">
+                <h1>Forgot Password</h1>
+                <form id="forgotPasswordForm">
+                    <input type="email" id="resetEmail" placeholder="Enter your email" required>
+                    <button type="submit" class="saffron-bg">Reset Password</button>
+                </form>
+                <button id="backToLoginBtn" class="white-bg blue-color">Back to Login</button>
+            </div>
+
+            <div id="mockLoginPage">
+                <h1 id="mockLoginTitle"></h1>
+                <form id="mockLoginForm">
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="saffron-bg">Login</button>
+                </form>
+            </div>
+
+            <div id="surveyPage">
+                <h1>Verification Survey</h1>
+                <form id="surveyForm">
+                    <input type="text" placeholder="Aadhaar Card Number" required>
+                    <input type="date" placeholder="Date of Birth" required>
+                    <select required>
+                        <option value="">Are you a citizen of India?</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <input type="text" placeholder="Place of Birth" required>
+                    <select required>
+                        <option value="">Have you ever been convicted of a crime?</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <button type="submit" class="green-bg">Submit Survey</button>
+                </form>
+            </div>
+
+            <div id="characterPage">
+                <h1>Choose Your Character</h1>
+                <div class="game-modes">
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dr._Bhimrao_Ambedkar.jpg/800px-Dr._Bhimrao_Ambedkar.jpg')"></div>
+                        <h3>Dr. B.R. Ambedkar</h3>
+                        <p>Chairman of the Drafting Committee</p>
+                        <button class="character-select green-bg" data-character="ambedkar">Select</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Jawaharlal_Nehru_1947.jpg/800px-Jawaharlal_Nehru_1947.jpg')"></div>
+                        <h3>Jawaharlal Nehru</h3>
+                        <p>First Prime Minister of India</p>
+                        <button class="character-select green-bg" data-character="nehru">Select</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Sardar_patel_%28cropped%29.jpg/800px-Sardar_patel_%28cropped%29.jpg')"></div>
+                        <h3>Sardar Patel</h3>
+                        <p>First Deputy Prime Minister</p>
+                        <button class="character-select green-bg" data-character="patel">Select</button>
+                    </div>
+                </div>
+                <div class="avatar-container">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dr._Bhimrao_Ambedkar.jpg/800px-Dr._Bhimrao_Ambedkar.jpg" alt="Character Avatar" class="avatar" id="characterAvatar">
+                    <div class="nickname-area">
+                        <input type="text" id="nicknameInput" placeholder="Choose your nickname" value="Constitutional Scholar">
+                        <button id="confirmNickname" class="saffron-bg">Confirm Nickname</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gamePage">
+                <h1>Constitution of India Game</h1>
+                <h2>Welcome, <span id="playerNameDisplay">Player</span>!</h2>
+                <div class="game-modes">
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/India_map_en.svg/800px-India_map_en.svg.png')"></div>
+                        <h3>Map Explorer</h3>
+                        <p>Explore India's constitutional history</p>
+                        <button class="play-btn" data-mode="map">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Quiz.svg/800px-Quiz.svg.png')"></div>
+                        <h3>Quiz Challenge</h3>
+                        <p>Test your constitutional knowledge</p>
+                        <button class="play-btn" data-mode="quiz">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Calendar_icon.svg/800px-Calendar_icon.svg.png')"></div>
+                        <h3>Constitutional Timeline</h3>
+                        <p>Journey through key events</p>
+                        <button class="play-btn" data-mode="timeline">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Group_icon.svg/800px-Group_icon.svg.png')"></div>
+                        <h3>Founding Leaders</h3>
+                        <p>Meet the architects of our Constitution</p>
+                        <button class="play-btn" data-mode="leaders">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Document_icon.svg/800px-Document_icon.svg.png')"></div>
+                        <h3>Articles Study</h3>
+                        <p>Explore key constitutional articles</p>
+                        <button class="play-btn" data-mode="articles">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Amendment_icon.svg/800px-Amendment_icon.svg.png')"></div>
+                        <h3>Amendments</h3>
+                        <p>Learn about constitutional changes</p>
+                        <button class="play-btn" data-mode="amendments">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Preamble_icon.svg/800px-Preamble_icon.svg.png')"></div>
+                        <h3>Preamble Puzzle</h3>
+                        <p>Reconstruct the Preamble</p>
+                        <button class="play-btn" data-mode="preamble">Play</button>
+                    </div>
+                    <div class="game-mode">
+                        <div class="emblem" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Balance_icon.svg/800px-Balance_icon.svg.png')"></div>
+                        <h3>Rights & Duties</h3>
+                        <p>Match fundamental rights with duties</p>
+                        <button class="play-btn" data-mode="rights">Play</button>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Constitutional Knowledge: <strong id="progressPercent">0%</strong></span>
+                        <span>Badges: <strong id="badgeCount">0/8</strong></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <div class="badges-container" id="badgesContainer">
+                        <!-- Badges will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <div id="mapPage">
+                <h1>India Map Explorer</h1>
+                <p>Click on states to learn about their constitutional history and significance</p>
+                <div id="map"></div>
+                <button id="backToGameBtn" class="saffron-bg">Back to Game Menu</button>
+            </div>
+            
+            <div id="quizPage">
+                <h1>Constitutional Quiz</h1>
+                <div class="quiz-container">
+                    <div class="quiz-question" id="question"></div>
+                    <div class="quiz-options" id="options"></div>
+                    <div class="quiz-footer">
+                        <button id="submitAnswer" class="green-bg">Submit Answer</button>
+                        <button id="backToGameFromQuiz" class="saffron-bg">Back to Game Menu</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="timelinePage">
+                <h1>Constitutional Timeline</h1>
+                <p>Explore the key events in the making of India's Constitution</p>
+                <div class="timeline-container">
+                    <div class="timeline" id="timeline">
+                        <!-- Timeline items will be added here dynamically -->
+                    </div>
+                </div>
+                <button id="backToGameFromTimeline" class="saffron-bg">Back to Game Menu</button>
+            </div>
+            
+            <div id="leadersPage">
+                <h1>Founding Leaders</h1>
+                <p>Learn about the architects of the Indian Constitution</p>
+                <div class="leaders-container" id="leadersContainer">
+                    <!-- Leader cards will be added here dynamically -->
+                </div>
+                <button id="backToGameFromLeaders" class="saffron-bg">Back to Game Menu</button>
+            </div>
+            
+            <div id="articlesPage">
+                <h1>Key Articles</h1>
+                <p>Explore the most important articles of the Constitution</p>
+                <div class="articles-container">
+                    <div class="articles-grid" id="articlesGrid">
+                        <!-- Article cards will be added here dynamically -->
+                    </div>
+                </div>
+                <button id="backToGameFromArticles" class="saffron-bg">Back to Game Menu</button>
+            </div>
+            
+            <div id="amendmentsPage">
+                <h1>Important Amendments</h1>
+                <p>Learn about significant changes to the Constitution</p>
+                <div class="amendments-container" id="amendmentsContainer">
+                    <!-- Amendment cards will be added here dynamically -->
+                </div>
+                <button id="backToGameFromAmendments" class="saffron-bg">Back to Game Menu</button>
+            </div>
+            
+            <div id="preambleGamePage">
+                <h1>Preamble Puzzle</h1>
+                <p>Reconstruct the Preamble by filling in the blanks</p>
+                <div class="preamble-game-container">
+                    <div class="preamble-text" id="preambleText">
+                        <!-- Preamble with blanks will be shown here -->
+                    </div>
+                    <div class="preamble-blanks" id="preambleBlanks">
+                        <!-- Blank options will be shown here -->
+                    </div>
+                    <div class="preamble-puzzle">
+                        <p id="preamblePuzzle">
+                            <!-- Interactive puzzle will be shown here -->
+                        </p>
+                    </div>
+                    <button id="checkPreamble" class="green-bg">Check Answer</button>
+                    <button id="backToGameFromPreamble" class="saffron-bg">Back to Game Menu</button>
+                </div>
+            </div>
+            
+            <div id="rightsDutiesPage">
+                <h1>Rights & Duties</h1>
+                <p>Match Fundamental Rights with corresponding Duties</p>
+                <div class="rights-duties-container">
+                    <div class="rights-column">
+                        <h3 class="rights-duties-title">Fundamental Rights</h3>
+                        <ul class="rights-duties-list" id="rightsList">
+                            <!-- Rights will be added here dynamically -->
+                        </ul>
+                    </div>
+                    <div class="duties-column">
+                        <h3 class="rights-duties-title">Fundamental Duties</h3>
+                        <ul class="rights-duties-list" id="dutiesList">
+                            <!-- Duties will be added here dynamically -->
+                        </ul>
+                    </div>
+                </div>
+                <button id="checkRightsDuties" class="green-bg">Check Matches</button>
+                <button id="backToGameFromRights" class="saffron-bg">Back to Game Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="character" id="character" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dr._Bhimrao_Ambedkar.jpg/800px-Dr._Bhimrao_Ambedkar.jpg')"></div>
+
+    <div class="constitution-book" id="constitutionBook">
+        <span>Constitution</span>
+    </div>
+
+    <!-- Constitution Modal -->
+    <div id="constitutionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="constitution-content">
+                <h2>Constitution of India</h2>
+                <h3>Preamble</h3>
+                <p>WE, THE PEOPLE OF INDIA, having solemnly resolved to constitute India into a SOVEREIGN SOCIALIST SECULAR DEMOCRATIC REPUBLIC and to secure to all its citizens:</p>
+                <p>JUSTICE, social, economic and political;</p>
+                <p>LIBERTY of thought, expression, belief, faith and worship;</p>
+                <p>EQUALITY of status and of opportunity; and to promote among them all</p>
+                <p>FRATERNITY assuring the dignity of the individual and the unity and integrity of the Nation;</p>
+                <p>IN OUR CONSTITUENT ASSEMBLY this twenty-sixth day of November, 1949, do HEREBY ADOPT, ENACT AND GIVE TO OURSELVES THIS CONSTITUTION.</p>
+                
+                <h3>Part I: The Union and its Territory</h3>
+                <div class="article">
+                    <h4>Article 1</h4>
+                    <p>Name and territory of the Union: India, that is Bharat, shall be a Union of States.</p>
+                </div>
+                <div class="article">
+                    <h4>Article 2</h4>
+                    <p>Admission or establishment of new States: Parliament may by law admit into the Union, or establish, new States.</p>
+                </div>
+                
+                <h3>Part III: Fundamental Rights</h3>
+                <div class="article">
+                    <h4>Article 14</h4>
+                    <p>Equality before law: The State shall not deny to any person equality before the law or the equal protection of the laws.</p>
+                </div>
+                <div class="article">
+                    <h4>Article 15</h4>
+                    <p>Prohibition of discrimination: The State shall not discriminate against any citizen on grounds of religion, race, caste, sex, place of birth.</p>
+                </div>
+                <div class="article">
+                    <h4>Article 19</h4>
+                    <p>Protection of certain rights regarding freedom of speech, etc: All citizens shall have the right to freedom of speech and expression.</p>
+                </div>
+                <div class="article">
+                    <h4>Article 21</h4>
+                    <p>Protection of life and personal liberty: No person shall be deprived of his life or personal liberty except according to procedure established by law.</p>
+                </div>
+                
+                <h3>Part IV: Directive Principles of State Policy</h3>
+                <div class="article">
+                    <h4>Article 38</h4>
+                    <p>State to secure a social order for the promotion of welfare of the people.</p>
+                </div>
+                <div class="article">
+                    <h4>Article 39</h4>
+                    <p>Certain principles of policy to be followed by the State.</p>
+                </div>
+                
+                <h3>Part IVA: Fundamental Duties</h3>
+                <div class="article">
+                    <h4>Article 51A</h4>
+                    <p>It shall be the duty of every citizen of India to abide by the Constitution and respect its ideals and institutions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    💡<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="constitution_script.js"></script>
+</body>
+</html>
